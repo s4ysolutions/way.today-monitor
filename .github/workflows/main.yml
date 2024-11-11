@@ -33,10 +33,5 @@ jobs:
     # Report to Slack if response is non-200 or incorrect body
     - name: Send Slack Notification if failed
       if: steps.http_request.outputs.status == 'failed'
-      uses: slackapi/slack-github-action@v1
-      with:
-        payload: |
-          {
-            "text": "🚨 *Server Status Alert* 🚨\nThe server responded with a non-200 HTTP code or incorrect body. Response: ${{ steps.http_request.outputs.status }}."
-          }
-        slack-token: ${{ secrets.SLACK_TOKEN }}
+      shell: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}'  ${{ secrets.SLACK_URL }}
