@@ -19,7 +19,7 @@ jobs:
     - name: Make GET request and check response
       id: http_request
       run: |
-        RESPONSE=$(curl --write-out "%{http_code}" --silent --output /dev/null http://tracker.way.today:8001/1/pingx)
+        RESPONSE=$(curl --write-out "%{http_code}" --silent --output /dev/null http://tracker.way.today:8001/1/ping)
         BODY=$(curl --silent http://tracker.way.today:8001/1/ping)
         echo "Response Code: $RESPONSE"
         echo "Response Body: $BODY"
